@@ -43,7 +43,6 @@
     line-height: 1.7;
   }
 
-  /* ── GRID BACKGROUND ── */
   body::before {
     content: '';
     position: fixed;
@@ -56,7 +55,6 @@
     z-index: 0;
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -95,7 +93,6 @@
   }
   .nav-links a:hover { color: var(--green); }
 
-  /* ── HERO ── */
   .hero {
     position: relative;
     z-index: 1;
@@ -162,9 +159,7 @@
     flex-wrap: wrap;
   }
 
-  .stat {
-    text-align: center;
-  }
+  .stat { text-align: center; }
   .stat-num {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -229,7 +224,6 @@
     50% { transform: translateX(-50%) translateY(6px); }
   }
 
-  /* ── SECTIONS ── */
   section {
     position: relative;
     z-index: 1;
@@ -256,7 +250,6 @@
     color: var(--text);
   }
 
-  /* ── LEVEL CARDS ── */
   .levels-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -273,9 +266,7 @@
     overflow: hidden;
     transition: transform 0.3s, border-color 0.3s;
   }
-  .level-card:hover {
-    transform: translateY(-4px);
-  }
+  .level-card:hover { transform: translateY(-4px); }
 
   .level-card::before {
     content: '';
@@ -339,7 +330,6 @@
   .intermediate .module-dot { background: var(--amber); opacity: 0.6; }
   .advanced .module-dot { background: var(--purple); opacity: 0.6; }
 
-  /* ── PROGRESS / DELIVERABLES TABLE ── */
   .deliverables-wrap {
     background: var(--card);
     border: 1px solid var(--border);
@@ -380,10 +370,7 @@
     color: var(--muted);
   }
 
-  .row-task {
-    font-size: 0.85rem;
-    color: var(--text);
-  }
+  .row-task { font-size: 0.85rem; color: var(--text); }
 
   .row-level {
     font-family: 'DM Mono', monospace;
@@ -412,7 +399,6 @@
   .done .status-dot { background: var(--green); }
   .pending .status-dot { background: var(--dim); }
 
-  /* ── DELIVERABLE DETAIL CARDS ── */
   .detail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -506,7 +492,6 @@
     margin-top: 1rem;
   }
 
-  /* ── TOOLS SECTION ── */
   .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -527,18 +512,9 @@
     transform: translateY(-2px);
   }
 
-  .tool-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
+  .tool-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .tool-name { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); }
 
-  .tool-name {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
-
-  /* ── REPO STRUCTURE ── */
   .tree {
     background: var(--card);
     border: 1px solid var(--border);
@@ -556,7 +532,6 @@
   .tree-done { color: var(--green); }
   .tree-connector { color: var(--dim); user-select: none; }
 
-  /* ── PROGRESS BAR ── */
   .progress-wrap {
     background: var(--card);
     border: 1px solid var(--border);
@@ -603,7 +578,6 @@
   .progress-fill.amber { background: linear-gradient(90deg, #c17f10, var(--amber)); }
   .progress-fill.purple { background: linear-gradient(90deg, #7c5fe0, var(--purple)); }
 
-  /* ── FOOTER ── */
   footer {
     position: relative;
     z-index: 1;
@@ -645,18 +619,13 @@
   }
   .footer-link:hover { background: var(--green-dim); }
 
-  /* ── ANIMATIONS ── */
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
-  .fade-up.visible {
-    opacity: 1;
-    transform: none;
-  }
+  .fade-up.visible { opacity: 1; transform: none; }
 
-  /* ── DIVIDER ── */
   .section-divider {
     position: relative;
     z-index: 1;
@@ -665,7 +634,6 @@
     margin: 0 2rem;
   }
 
-  /* responsive */
   @media (max-width: 768px) {
     .levels-grid { grid-template-columns: 1fr; }
     .detail-grid { grid-template-columns: 1fr; }
@@ -718,7 +686,7 @@
       <div class="stat-label">Deliverables</div>
     </div>
     <div class="stat">
-      <div class="stat-num">2</div>
+      <div class="stat-num">5</div>
       <div class="stat-label">Completed</div>
     </div>
   </div>
@@ -736,7 +704,6 @@
   <h2 class="section-title fade-up">Three levels.<br>One journey.</h2>
 
   <div class="levels-grid">
-
     <div class="level-card beginner fade-up">
       <span class="level-tag">Beginner</span>
       <h3>Foundation</h3>
@@ -774,10 +741,8 @@
         <li class="module-item"><span class="module-dot"></span>Capstone: Generative AI Innovation</li>
       </ul>
     </div>
-
   </div>
 
-  <!-- Tools -->
   <div class="section-label" style="margin-top:3rem">Technologies</div>
   <div class="tools-grid fade-up" style="margin-top:1rem">
     <div class="tool-chip"><div class="tool-icon">🐍</div><div class="tool-name">Python</div></div>
@@ -798,7 +763,6 @@
   <div class="section-label">02 — Deliverables</div>
   <h2 class="section-title fade-up">What's been built.</h2>
 
-  <!-- Module 1 Detail Cards -->
   <div class="detail-grid fade-up">
 
     <div class="detail-card featured">
@@ -831,7 +795,7 @@
       <span class="file-tag">tictactoe_ai.py</span>
     </div>
 
-    <div class="detail-card">
+    <div class="detail-card featured">
       <span class="done-ribbon">✓ Complete</span>
       <div class="detail-num">03</div>
       <div class="detail-title">Matplotlib Exercise 1</div>
@@ -844,7 +808,7 @@
       <span class="file-tag">matplotlib_exercises.py</span>
     </div>
 
-    <div class="detail-card">
+    <div class="detail-card featured">
       <span class="done-ribbon">✓ Complete</span>
       <div class="detail-num">04</div>
       <div class="detail-title">Matplotlib Exercise 2</div>
@@ -855,6 +819,21 @@
         <li class="detail-req">Style each subplot distinctly</li>
       </ul>
       <span class="file-tag">matplotlib_exercises.py</span>
+    </div>
+
+    <div class="detail-card featured">
+      <span class="done-ribbon">✓ Complete</span>
+      <div class="detail-num">05</div>
+      <div class="detail-title">Data Analysis Notebook</div>
+      <div class="detail-desc">Exploratory data analysis of the Iris dataset using Pandas and NumPy. Covers data exploration, descriptive statistics, and feature correlation analysis.</div>
+      <ul class="detail-reqs">
+        <li class="detail-req">Explore data with head(), info(), describe()</li>
+        <li class="detail-req">Calculate mean, median, mode, std dev</li>
+        <li class="detail-req">Build combined statistics summary table</li>
+        <li class="detail-req">Compute Pearson correlation matrix</li>
+        <li class="detail-req">Cross-verify results with NumPy</li>
+      </ul>
+      <span class="file-tag">data_analysis.ipynb</span>
     </div>
 
   </div>
@@ -885,7 +864,7 @@
         <div class="row-module">M2 · Statistics</div>
         <div class="row-task">Dataset analysis with NumPy / Pandas</div>
         <div><span class="row-level b">Beginner</span></div>
-        <div><span class="status-badge pending"><span class="status-dot"></span>Pending</span></div>
+        <div><span class="status-badge done"><span class="status-dot"></span>Done</span></div>
       </div>
       <div class="deliverable-row">
         <div class="row-module">M3 · Visualisation</div>
@@ -968,10 +947,10 @@
     <div class="progress-wrap">
       <div class="progress-label">
         <span class="progress-name">Beginner Level</span>
-        <span class="progress-pct">2 / 6 complete</span>
+        <span class="progress-pct">3 / 6 complete</span>
       </div>
       <div class="progress-track">
-        <div class="progress-fill green" data-width="33"></div>
+        <div class="progress-fill green" data-width="50"></div>
       </div>
     </div>
 
@@ -1014,6 +993,7 @@
 <span class="tree-connector">│   │   ├── </span><span class="tree-done">matplotlib_exercises.py     ✓</span>
 <span class="tree-connector">│   │   └── </span><span class="tree-done">README.md</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-2-statistics/</span>
+<span class="tree-connector">│   │   └── </span><span class="tree-done">data_analysis.ipynb         ✓</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-3-data-visualization/</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-4-ml-fundamentals/</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-5-generative-ai-concepts/</span>
@@ -1043,14 +1023,13 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">Olise Ebinum</div>
-  <div class="footer-sub">FlexiSAF Internship · GAIDS · 2025</div>
+  <div class="footer-sub">FlexiSAF Internship · GAIDS · 2026</div>
   <a class="footer-link" href="https://github.com/Olisebinum/Gen-AI-Pathway" target="_blank">
     ↗ github.com/Olisebinum/Gen-AI-Pathway
   </a>
 </footer>
 
 <script>
-  // Fade-up observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1062,7 +1041,6 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Progress bar animation
   const progressObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
