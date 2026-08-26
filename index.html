@@ -90,8 +90,26 @@
     text-decoration: none;
     letter-spacing: 0.05em;
     transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -4px;
+    height: 1px;
+    background: var(--green);
+    transition: right 0.25s ease;
   }
   .nav-links a:hover { color: var(--green); }
+  .nav-links a:hover::after { right: 0; }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 
   .hero {
     position: relative;
@@ -189,7 +207,7 @@
     border-radius: 4px;
     text-decoration: none;
     letter-spacing: 0.02em;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
   }
   .hero-btn:hover {
     transform: translateY(-2px);
@@ -248,6 +266,18 @@
     letter-spacing: -0.03em;
     margin-bottom: 3rem;
     color: var(--text);
+    position: relative;
+    padding-left: 1.1rem;
+  }
+  .section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    bottom: 0.15em;
+    width: 3px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--green), var(--blue));
   }
 
   .levels-grid {
@@ -264,9 +294,13 @@
     padding: 2rem 1.75rem;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.12);
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
   }
-  .level-card:hover { transform: translateY(-4px); }
+  .level-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 16px 40px rgba(0,0,0,0.2);
+  }
 
   .level-card::before {
     content: '';
@@ -335,6 +369,7 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1);
   }
 
   .deliverables-header {
@@ -358,11 +393,14 @@
     grid-template-columns: 2fr 3fr 1fr 1fr;
     padding: 1rem 1.75rem;
     border-bottom: 1px solid var(--border);
+    border-left: 2px solid transparent;
     align-items: center;
-    transition: background 0.2s;
+    transition: background 0.2s, border-left-color 0.3s;
   }
   .deliverable-row:last-child { border-bottom: none; }
-  .deliverable-row:hover { background: rgba(255,255,255,0.02); }
+  .deliverable-row:hover { background: rgba(255,255,255,0.025); }
+  .deliverable-row:has(.status-badge.done) { border-left-color: var(--green); }
+  .deliverable-row:has(.status-badge.pending) { border-left-color: var(--dim); opacity: 0.85; }
 
   .row-module {
     font-family: 'DM Mono', monospace;
@@ -413,9 +451,14 @@
     padding: 1.75rem;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1);
+    transition: border-color 0.3s, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
   }
-  .detail-card:hover { border-color: var(--border2); }
+  .detail-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.22), 0 14px 32px rgba(0,0,0,0.16);
+  }
 
   .detail-card.featured {
     border-color: rgba(0,229,160,0.25);
@@ -504,12 +547,14 @@
     border-radius: 8px;
     padding: 1rem;
     text-align: center;
-    transition: border-color 0.2s, transform 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: border-color 0.2s, transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
     cursor: default;
   }
   .tool-chip:hover {
     border-color: var(--border2);
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
   }
 
   .tool-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -524,6 +569,7 @@
     font-size: 0.8rem;
     line-height: 2;
     color: var(--muted);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1);
   }
 
   .tree-root { color: var(--text); font-weight: 500; }
@@ -538,7 +584,10 @@
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1);
+    transition: border-color 0.3s;
   }
+  .progress-wrap:hover { border-color: var(--border2); }
 
   .progress-label {
     display: flex;
@@ -572,6 +621,22 @@
     border-radius: 2px;
     transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
     width: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    width: 40%;
+    transform: translateX(-150%);
+    animation: shine 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  @keyframes shine {
+    0%, 20% { transform: translateX(-150%); }
+    60%, 100% { transform: translateX(350%); }
   }
 
   .progress-fill.green { background: linear-gradient(90deg, var(--green2), var(--green)); }
@@ -615,9 +680,13 @@
     border: 1px solid rgba(0,229,160,0.3);
     padding: 0.6rem 1.5rem;
     border-radius: 4px;
-    transition: background 0.2s;
+    transition: background 0.25s, transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
   }
-  .footer-link:hover { background: var(--green-dim); }
+  .footer-link:hover {
+    background: var(--green-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,229,160,0.15);
+  }
 
   .fade-up {
     opacity: 0;
@@ -686,7 +755,7 @@
       <div class="stat-label">Deliverables</div>
     </div>
     <div class="stat">
-      <div class="stat-num">5</div>
+      <div class="stat-num">9</div>
       <div class="stat-label">Completed</div>
     </div>
   </div>
@@ -705,6 +774,7 @@
 
   <div class="levels-grid">
     <div class="level-card beginner fade-up">
+      <span class="done-ribbon">✓ Track Complete</span>
       <span class="level-tag">Beginner</span>
       <h3>Foundation</h3>
       <ul class="module-list">
@@ -836,6 +906,50 @@
       <span class="file-tag">data_analysis.ipynb</span>
     </div>
 
+    <div class="detail-card featured">
+      <span class="done-ribbon">✓ Complete</span>
+      <div class="detail-num">06</div>
+      <div class="detail-title">Data Visualization Notebook</div>
+      <div class="detail-desc">Structured exploration of the Iris dataset across Matplotlib fundamentals, Seaborn single-variable plots, and Seaborn two-variable plots — including regression with R² annotation, joint plots, and a full pair plot matrix.</div>
+      <ul class="detail-reqs">
+        <li class="detail-req">Matplotlib line & scatter plots</li>
+        <li class="detail-req">Seaborn histograms, KDE, box plots</li>
+        <li class="detail-req">Regression plot with R² annotation</li>
+        <li class="detail-req">Joint plots for bivariate analysis</li>
+        <li class="detail-req">Pair plot matrix with Pearson r per panel</li>
+      </ul>
+      <span class="file-tag">data_visualization.ipynb</span>
+    </div>
+
+    <div class="detail-card featured">
+      <span class="done-ribbon">✓ Complete</span>
+      <div class="detail-num">07</div>
+      <div class="detail-title">ML Fundamentals Notebook</div>
+      <div class="detail-desc">Definition of Machine Learning and all three core paradigms, each demonstrated with a small working example rather than definitions alone — grounded in Microsoft's ML-For-Beginners curriculum.</div>
+      <ul class="detail-reqs">
+        <li class="detail-req">Supervised: KNN classifier on Iris (97.8% accuracy)</li>
+        <li class="detail-req">Unsupervised: K-Means clustering vs. true labels</li>
+        <li class="detail-req">Reinforcement: epsilon-greedy multi-armed bandit</li>
+        <li class="detail-req">Confusion matrix & cluster visualizations</li>
+      </ul>
+      <span class="file-tag">ml_fundamentals.ipynb</span>
+    </div>
+
+    <div class="detail-card featured">
+      <span class="done-ribbon">✓ Complete</span>
+      <div class="detail-num">08</div>
+      <div class="detail-title">Hands-on Project — Titanic Survival Analysis</div>
+      <div class="detail-desc">End-to-end capstone combining Python, statistics, visualization, and ML fundamentals on a real-world dataset with genuine missing data — a supervised classifier and an unsupervised clustering exercise on the same 891 passengers.</div>
+      <ul class="detail-reqs">
+        <li class="detail-req">Data cleaning & feature engineering</li>
+        <li class="detail-req">EDA: descriptive stats, correlation heatmap</li>
+        <li class="detail-req">Random Forest classifier — 79.9% test accuracy</li>
+        <li class="detail-req">K-Means clustering vs. survival & class labels</li>
+        <li class="detail-req">Discussion: why the clusters diverged from survival</li>
+      </ul>
+      <span class="file-tag">hands_on_project.ipynb</span>
+    </div>
+
   </div>
 
   <!-- All deliverables table -->
@@ -870,13 +984,25 @@
         <div class="row-module">M3 · Visualisation</div>
         <div class="row-task">Matplotlib & Seaborn visualisations</div>
         <div><span class="row-level b">Beginner</span></div>
-        <div><span class="status-badge pending"><span class="status-dot"></span>Pending</span></div>
+        <div><span class="status-badge done"><span class="status-dot"></span>Done</span></div>
+      </div>
+      <div class="deliverable-row">
+        <div class="row-module">M4 · ML Fundamentals</div>
+        <div class="row-task">Supervised, unsupervised & RL demos</div>
+        <div><span class="row-level b">Beginner</span></div>
+        <div><span class="status-badge done"><span class="status-dot"></span>Done</span></div>
       </div>
       <div class="deliverable-row">
         <div class="row-module">M5 · Gen AI</div>
         <div class="row-task">Introductory Gen AI course certificate</div>
         <div><span class="row-level b">Beginner</span></div>
-        <div><span class="status-badge pending"><span class="status-dot"></span>Pending</span></div>
+        <div><span class="status-badge done"><span class="status-dot"></span>Done</span></div>
+      </div>
+      <div class="deliverable-row">
+        <div class="row-module">Hands-on Project</div>
+        <div class="row-task">Titanic survival — supervised + unsupervised ML</div>
+        <div><span class="row-level b">Beginner</span></div>
+        <div><span class="status-badge done"><span class="status-dot"></span>Done</span></div>
       </div>
       <div class="deliverable-row">
         <div class="row-module">M1 · Adv. ML</div>
@@ -947,10 +1073,10 @@
     <div class="progress-wrap">
       <div class="progress-label">
         <span class="progress-name">Beginner Level</span>
-        <span class="progress-pct">3 / 6 complete</span>
+        <span class="progress-pct">6 / 6 complete</span>
       </div>
       <div class="progress-track">
-        <div class="progress-fill green" data-width="50"></div>
+        <div class="progress-fill green" data-width="100"></div>
       </div>
     </div>
 
@@ -995,9 +1121,12 @@
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-2-statistics/</span>
 <span class="tree-connector">│   │   └── </span><span class="tree-done">data_analysis.ipynb         ✓</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-3-data-visualization/</span>
+<span class="tree-connector">│   │   └── </span><span class="tree-done">data_visualization.ipynb    ✓</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-4-ml-fundamentals/</span>
+<span class="tree-connector">│   │   └── </span><span class="tree-done">ml_fundamentals.ipynb       ✓</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-5-generative-ai-concepts/</span>
 <span class="tree-connector">│   └── </span><span class="tree-dir">hands-on-project/</span>
+<span class="tree-connector">│       └── </span><span class="tree-done">hands_on_project.ipynb      ✓</span>
 <span class="tree-connector">│</span>
 <span class="tree-connector">├── </span><span class="tree-dir">intermediate/</span>
 <span class="tree-connector">│   ├── </span><span class="tree-dir">module-1-advanced-ml/</span>
